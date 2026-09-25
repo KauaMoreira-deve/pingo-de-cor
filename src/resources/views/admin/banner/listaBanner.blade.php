@@ -54,5 +54,5 @@
         </table>
     </div>
 
-    <div class="admin-card-footer">Total de banners: {{ $listarBanner->count() }}</div>
+    <div class="admin-card-footer">Total de banners: {{ $listaBanner->count() }}</div>
 </div>

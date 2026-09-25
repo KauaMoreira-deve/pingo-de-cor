@@ -8,11 +8,11 @@
         <nav class="admin-nav" aria-label="Páginas do painel">
             <a class="admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}"><span class="admin-nav-icon">&#9635;</span><span>Visão geral</span></a>
             <a class="admin-nav-link {{ request()->routeIs('admin.banner.*') ? 'active' : '' }}" href="{{ route('admin.banner.index') }}"><span class="admin-nav-icon">&#9635;</span><span>Banners</span></a>
-            <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#182;</span><span>Textos do site</span></a>
+            <a class="admin-nav-link {{ request()->routeIs('admin.cliente.*') ? 'active' : '' }}" href="{{ route('admin.cliente.index') }}"><span class="admin-nav-icon">&#9635;</span><span>Cliente</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9638;</span><span>Projetos</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9671;</span><span>Galerias</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9645;</span><span>Publicações</span></a>
-            <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9776;</span><span>Páginas</span></a>
+            <a class="admin-nav-link {{ request()->routeIs('admin.contato.*') ? 'active' : '' }}" href="{{ route('admin.contato.index') }}"><span class="admin-nav-icon">&#9635;</span><span>Contato</span></a>
         </nav>
         <p class="admin-nav-heading admin-nav-heading-spaced">PERSONALIZAÇÃO</p>
         <nav class="admin-nav" aria-label="Personalização">
