@@ -11,7 +11,7 @@
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#182;</span><span>Textos do site</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9638;</span><span>Projetos</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9671;</span><span>Galerias</span></a>
-            <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9645;</span><span>Publicações</span></a>
+            <a class="admin-nav-link" href="{{ route('admin.publicacoes.index') }}"><span class="admin-nav-icon">&#9645;</span><span>Publicações</span></a>
             <a class="admin-nav-link" href="#"><span class="admin-nav-icon">&#9776;</span><span>Páginas</span></a>
         </nav>
         <p class="admin-nav-heading admin-nav-heading-spaced">PERSONALIZAÇÃO</p>
