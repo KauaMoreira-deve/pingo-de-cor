@@ -5,11 +5,15 @@ use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ProjetosController;
 use App\Http\Controllers\Site\PublicacoesController;
 use App\Http\Controllers\Site\SobreController;
+
 use Illuminate\Support\Facades\Route;
 
 // area administrativa
 use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\BannerController;
+use \App\Http\Controllers\Admin\ClienteController;
+use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
+
 
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -40,5 +44,7 @@ Route::redirect('/brinquedoteca.html', '/projetos/brinquedoteca');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/banners', [BannerController::class, 'index'])->name('banner.index');
+    Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
+    Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
     
 });

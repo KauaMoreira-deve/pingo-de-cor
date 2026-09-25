@@ -9,6 +9,6 @@ class BannerController extends Controller
 {
     public function index(): View
     {
-        return view('admin.banner.index', compact('listarBanner'));
+        return view('admin.banner.index', compact('listaBanner'));
     }
 }
