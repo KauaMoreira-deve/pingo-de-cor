@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\BannerController;
 use \App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
+use App\Http\Controllers\Admin\PublicacaoController;
+
 
 
 
@@ -46,5 +48,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/banners', [BannerController::class, 'index'])->name('banner.index');
     Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
     Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
+    Route::get('/publicacoes', [PublicacaoController::class, 'index'])->name('publicacoes.index');
+
+
     
 });
