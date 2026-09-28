@@ -50,4 +50,4 @@
     </div>
 
     <div class="admin-card-footer">Total de contactos: {{ $listarContato->count() }}</div>
-</div>s
+</div>

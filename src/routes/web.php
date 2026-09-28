@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\BannerController;
 use \App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
+use \App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -48,3 +49,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
     
 });
+
+/*
+    |--------------------------------------------------------------------------
+    | LOGOUT
+    |--------------------------------------------------------------------------
+    */
+
+    Route::post('/logout', [LoginController::class, 'logout'])
+        ->name('logout');

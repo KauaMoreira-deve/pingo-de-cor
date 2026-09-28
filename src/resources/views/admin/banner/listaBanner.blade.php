@@ -4,7 +4,7 @@
             <h2>Banners e destaques</h2>
             <p>Imagens de capa e chamadas visuais da página inicial.</p>
         </div>
-        <span class="admin-tag">{{ $listarBanner->count() }} registros</span>
+        <span class="admin-tag">{{ $listaBanner->count() }} registros</span>
     </div>
 
     <div class="admin-filter-row">
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($listarBanner as $banner)
+                @forelse ($listaBanner as $banner)
                     <tr>
                         <td>
                             <img class="cell-image" src="{{ asset(data_get($banner, 'image')) }}"

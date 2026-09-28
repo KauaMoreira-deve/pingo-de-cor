@@ -557,3 +557,212 @@ body {
 .galeria img { max-width: 100%; }
 
 .cards > a { display: block; color: inherit; text-decoration: none; }
+
+/* ==========================================================================
+   Estilos da Tela de Login - Pingo Decor
+   ========================================================================== */
+
+/* Variáveis de cores baseadas no Painel */
+:root {
+    --bg-main: #f5f0eb;         /* Fundo bege claro do painel */
+    --bg-card: #ffffff;         /* Fundo branco dos cards */
+    --sidebar-dark: #3a322f;    /* Escuro da barra lateral */
+    --accent-brown: #a07a61;    /* Botão principal / destaque */
+    --accent-light: #d8beaf;   /* Destaque suave / item ativo */
+    --text-primary: #332d2a;    /* Texto principal */
+    --text-muted: #8c827a;      /* Texto secundário/Placeholder */
+    --border-color: #e6dfd8;    /* Bordas suaves */
+    --error-bg: #fce8e6;        /* Fundo alerta erro */
+    --error-text: #a83232;      /* Texto erro */
+    --success-bg: #e6f4ea;      /* Fundo alerta sucesso */
+    --success-text: #137333;    /* Texto sucesso */
+}
+
+/* Base Body */
+body.login-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Contêiner Central */
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Card do Formuário */
+.login-box {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    padding: 40px 32px;
+    box-shadow: 0 10px 30px rgba(58, 50, 47, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+/* Logo */
+.login-logo {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.login-logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+/* Cabeçalho do Card */
+.login-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.login-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 6px 0;
+}
+
+.login-header p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Form Groups */
+.login-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-group label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-group input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background-color: #faf8f5;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.login-group input:focus {
+    background-color: #ffffff;
+    border-color: var(--accent-brown);
+    box-shadow: 0 0 0 3px rgba(160, 122, 97, 0.15);
+}
+
+.login-group input::placeholder {
+    color: #bbb3ab;
+}
+
+/* Opções (Checkbox) */
+.login-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.login-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+}
+
+.login-options input[type="checkbox"] {
+    accent-color: var(--accent-brown);
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Botão de Envio */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-brown);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.login-button:hover {
+    background-color: #8c6850;
+}
+
+.login-button:active {
+    transform: scale(0.99);
+}
+
+/* Alertas de Mensagem */
+.login-alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid #f5c6cb;
+}
+
+.login-success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid #c3e6cb;
+}
+
+/* Rodapé do Login */
+.login-footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.login-footer p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.login-footer small {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
