@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('title', 'Publica??es | Pingo Decor')
+@section('title', 'Publicações | Pingo Decor')
 @section('content')
 <section class="publicacoes">
 
@@ -18,7 +18,7 @@
 
     <a href="https://revistacasaejardim.globo.com/google/amp/decoracao/noticia/2023/05/bem-dividido-quarto-do-filho-da-jornalista-giovana-romani-e-divertido-e-organizado.ghtml" target="_blank" class="pub-card">
       <div class="pub-img">
-        <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" alt="">
+        <img src="{{ asset('pingo-decor/assets/img/martim.jpeg') }}" alt="">
       </div>
       <div class="pub-info">
         <h3>QUARTO MARTIM</h3>

@@ -15,7 +15,7 @@
 
   <a href="{{ route('projetos.show', 'quarto-matteo') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}">
+      <img src="{{ asset('pingo-decor/assets/quarto-matteo.jpg') }}">
       <p>QUARTO MATTEO</p>
     </div>
   </a>
@@ -36,7 +36,7 @@
 
   <a href="{{ route('projetos.show', 'quarto-joaquim') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" alt="">
+      <img src="{{ asset('pingo-decor/assets/img/joaquim.png') }}" alt="">
       <p>QUARTO JOAQUIM</p>
     </div>
   </a>

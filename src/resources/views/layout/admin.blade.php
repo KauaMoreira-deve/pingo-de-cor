@@ -11,7 +11,7 @@
                 <div>
                     <p class="admin-eyebrow">@yield('eyebrow', 'PAINEL PINGO DECOR')</p>
                     <h1>@yield('heading', 'Vis?o geral')</h1>
-                    <p class="admin-description">@yield('description', 'Organize o conte?do visual do seu site em um s? lugar.')</p>
+                    <p class="admin-description">@yield('description', 'Organize o conteúdo visual do seu site em um só lugar.')</p>
                 </div>
                 <div class="admin-heading-actions">@yield('actions')</div>
             </div>
