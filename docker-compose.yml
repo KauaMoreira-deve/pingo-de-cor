@@ -26,8 +26,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pingo-decor
-      MYSQL_USER: larave
-      MYSQL_PASSWORD: larave
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
     ports:
       - "3307:3306"
     volumes:

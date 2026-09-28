@@ -21,34 +21,34 @@
             <thead>
                 <tr>
                     <th scope="col">Imagem</th>
-                    <th scope="col">Destaque</th>
-                    <th scope="col">Local no site</th>
-                    <th scope="col">Situação</th>
-                    <th scope="col">Atualizado</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Status</th>
+
                 </tr>
             </thead>
             <tbody>
                 @forelse ($listarBanner as $banner)
-                    <tr>
-                        <td>
-                            <img class="cell-image" src="{{ asset(data_get($banner, 'image')) }}"
-                                alt="Prévia de {{ data_get($banner, 'title') }}" loading="lazy">
-                        </td>
-                        <td><span class="cell-primary">{{ data_get($banner, 'title') }}</span></td>
-                        <td>{{ data_get($banner, 'local') }}</td>
-                        <td>
-                            <span class="admin-status {{ data_get($banner, 'status_tone', 'draft') }}">
-                                {{ data_get($banner, 'status') }}
-                            </span>
-                        </td>
-                        <td>{{ data_get($banner, 'updated') }}</td>
-                        <td><button type="button" class="admin-action" disabled>Editar</button></td>
-                    </tr>
+                <tr>
+                    <td>
+                        <img class="cell-image" src="{{ $banner->imagem_banner }}"
+                            alt="{{ $banner->titulo_banner }}" loading="lazy">
+                    </td>
+                    <td><span class="cell-primary">{{ $banner->titulo_banner }}</span></td>
+
+                    <td>
+                        <span class="admin-status {{ data_get($banner, 'status_tone', 'draft') }}">
+                            {{ $banner->status_banner }}
+                        </span>
+
+                       
+                    </td>
+                    <td>{{ data_get($banner, 'updated') }}</td>
+                    <td><button type="button" class="admin-action" disabled>Editar</button></td>
+                </tr>
                 @empty
-                    <tr>
-                        <td colspan="6">Nenhum banner cadastrado.</td>
-                    </tr>
+                <tr>
+                    <td colspan="6">Total de banners: {{ $banner->count() }}</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

@@ -2,22 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-Class Publicacao extends Model{
-      protected $table = 'tbl_publicacoes';
+class Publicacao extends Model
+{
+    use HasFactory;
+
+    protected $table = 'tbl_publicacoes';
+
     protected $primaryKey = 'id_publicacoes';
 
-    public $timestamps = false;
+    const CREATED_AT = 'data_criacao_publicacoes';
+    const UPDATED_AT = 'data_atualizacao_publicacoes';
 
     protected $fillable = [
         'titulo_publicacoes',
+        'descricao_publicacoes',
         'imagem_publicacoes',
-        'descrcao_publicacoes',
         'link_publicacoes',
         'data_publicacoes',
-
-
     ];
-
 }

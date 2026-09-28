@@ -7,8 +7,8 @@ use Illuminate\View\View;
 
 class PublicacoesController extends Controller
 {
-    public function publicacoes(): View
-    {
-        return view('site.publicacoes.publicacoes');
-    }
+    public function index(): View
+     {
+     return view('site.publicacoes.publicacoes');
+     }
 }

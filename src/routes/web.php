@@ -4,12 +4,18 @@ use App\Http\Controllers\Site\ContatoController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ProjetosController;
 use App\Http\Controllers\Site\SobreController;
+
 use Illuminate\Support\Facades\Route;
 
 // area administrativa
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\BannerController;
+use \App\Http\Controllers\Admin\BannerController;
+use \App\Http\Controllers\Admin\ClienteController;
+use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
 use App\Http\Controllers\Admin\PublicacaoController;
+use App\Http\Controllers\Admin\OrcamentoController;
+
+
 
 
 
@@ -41,9 +47,27 @@ Route::redirect('/brinquedoteca.html', '/projetos/brinquedoteca');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/banners', [BannerController::class, 'index'])->name('banner.index');
-
-
+    Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
+    Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
     Route::get('/publicacoes', [PublicacaoController::class, 'index'])->name('publicacoes.index');
+    Route::get('/orcamento', [OrcamentoController::class, 'index'])->name('orcamento.index');
+
+
+
+    
+//orcamento
+Route::get('/orcamento', [OrcamentoController::class, 'index'])
+    ->name('orcamento.index');
+
+Route::post('/orcamento', [OrcamentoController::class, 'store'])
+    ->name('orcamento.store');
+
+Route::put('/orcamento/{id}', [OrcamentoController::class, 'update'])
+    ->name('orcamento.update');
+
+Route::patch('/orcamento/{id}/status', [OrcamentoController::class, 'status'])
+    ->name('orcamento.status');
+
 
     
 });
