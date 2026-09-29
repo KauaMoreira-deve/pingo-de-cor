@@ -13,8 +13,9 @@ use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\BannerController;
 use \App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
-use App\Http\Controllers\Admin\PublicacaoController;
 use App\Http\Controllers\Admin\OrcamentoController;
+use App\Http\Controllers\Admin\ProjetosController as AdminProjetosController;
+use App\Http\Controllers\Admin\PublicacoesController as AdminPublicacoesController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('sobre');
@@ -40,30 +41,37 @@ Route::redirect('/quarto-benjamin.html', '/projetos/quarto-benjamin');
 Route::redirect('/quarto-alice-catarina.html', '/projetos/quarto-alice-catarina');
 Route::redirect('/brinquedoteca.html', '/projetos/brinquedoteca');
 
-// Painel administrativo demonstrativo (dados estáticos).
+// Painel administrativo.
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+
     Route::get('/banners', [BannerController::class, 'index'])->name('banner.index');
+    Route::post('/banners', [BannerController::class, 'store'])->name('banner.store');
+    Route::put('/banners/{id}', [BannerController::class, 'update'])->name('banner.update');
+    Route::delete('/banners/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');
+
     Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
+    Route::post('/cliente', [ClienteController::class, 'store'])->name('cliente.store');
+    Route::put('/cliente/{id}', [ClienteController::class, 'update'])->name('cliente.update');
+    Route::delete('/cliente/{id}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
+
     Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
-    Route::get('/publicacoes', [Publicacoesontroller::class, 'index'])->name('publicacoes.index');
+    Route::post('/contato', [AdminContatoController::class, 'store'])->name('contato.store');
+    Route::put('/contato/{id}', [AdminContatoController::class, 'update'])->name('contato.update');
+    Route::delete('/contato/{id}', [AdminContatoController::class, 'destroy'])->name('contato.destroy');
+
+    Route::get('/publicacoes', [AdminPublicacoesController::class, 'index'])->name('publicacoes.index');
+    Route::post('/publicacoes', [AdminPublicacoesController::class, 'store'])->name('publicacoes.store');
+    Route::put('/publicacoes/{id}', [AdminPublicacoesController::class, 'update'])->name('publicacoes.update');
+    Route::delete('/publicacoes/{id}', [AdminPublicacoesController::class, 'destroy'])->name('publicacoes.destroy');
+
+    Route::get('/projetos', [AdminProjetosController::class, 'index'])->name('projetos.index');
+    Route::post('/projetos', [AdminProjetosController::class, 'store'])->name('projetos.store');
+    Route::put('/projetos/{id}', [AdminProjetosController::class, 'update'])->name('projetos.update');
+    Route::delete('/projetos/{id}', [AdminProjetosController::class, 'destroy'])->name('projetos.destroy');
+
     Route::get('/orcamento', [OrcamentoController::class, 'index'])->name('orcamento.index');
-
-
-
-    
-//orcamento
-Route::get('/orcamento', [OrcamentoController::class, 'index'])
-    ->name('orcamento.index');
-
-Route::post('/orcamento', [OrcamentoController::class, 'store'])
-    ->name('orcamento.store');
-
-Route::put('/orcamento/{id}', [OrcamentoController::class, 'update'])
-    ->name('orcamento.update');
-
-Route::delete('/orcamento/{id}', [OrcamentoController::class, 'destroy'])
-    ->name('orcamento.destroy');
-
-    
+    Route::post('/orcamento', [OrcamentoController::class, 'store'])->name('orcamento.store');
+    Route::put('/orcamento/{id}', [OrcamentoController::class, 'update'])->name('orcamento.update');
+    Route::delete('/orcamento/{id}', [OrcamentoController::class, 'destroy'])->name('orcamento.destroy');
 });

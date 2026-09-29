@@ -14,24 +14,4 @@
         </div>
     </section>
     @include('admin.cards')
-    <div class="admin-dashboard-grid">
-        <section class="admin-card">
-            <div class="admin-card-header"><div><h2>Áreas de conteúdo</h2><p>Acesse as seções que compõem o site.</p></div><span class="admin-tag">Visão geral</span></div>
-            <div class="admin-card-body">
-                <div class="admin-section-list">
-                    <a href="{{ route('admin.banner.index') }}" class="admin-section-link"><span class="icon">&#9671;</span><span><strong>Banners</strong><small>Imagens de destaque</small></span><span class="arrow">&rarr;</span></a>
-                   
-                </div>
-            </div>
-        </section>
-        <section class="admin-card">
-            <div class="admin-card-header"><div><h2>Atividade recente</h2><p>Prévia de alterações de conteúdo.</p></div><span class="admin-tag">Exemplo</span></div>
-            <div class="admin-card-body admin-activity">
-                <div class="admin-activity-row"><span class="admin-activity-dot"></span><div><strong>Banner principal atualizado</strong><small>Home · 18 set 2026 às 10:42</small></div></div>
-                <div class="admin-activity-row"><span class="admin-activity-dot"></span><div><strong>Projeto Quarto Olivia publicado</strong><small>Portfólio · 17 set 2026 às 16:25</small></div></div>
-                <div class="admin-activity-row"><span class="admin-activity-dot"></span><div><strong>Texto de apresentação revisado</strong><small>Sobre · 15 set 2026 às 14:08</small></div></div>
-                <div class="admin-activity-row"><span class="admin-activity-dot"></span><div><strong>Nova publicação adicionada</strong><small>Publicações · 12 set 2026 às 09:32</small></div></div>
-            </div>
-        </section>
-    </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Projetos;
 use Illuminate\View\View;
 
 class ProjetosController extends Controller
@@ -22,7 +23,11 @@ class ProjetosController extends Controller
 
     public function index(): View
     {
-        return view('site.projetos.projetos');
+        $projetosDinamicos = Projetos::where('status_projetos', 'Ativo')
+            ->orderByDesc('id_projetos')
+            ->get();
+
+        return view('site.projetos.projetos', compact('projetosDinamicos'));
     }
 
     public function show(string $projeto): View

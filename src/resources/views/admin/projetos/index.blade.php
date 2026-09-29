@@ -4,11 +4,11 @@
     <button
         type="button"
         class="admin-primary-btn"
-        data-admin-modal-open="modalCriarPublicacao"
+        data-admin-modal-open="modalCriarProjetos"
         aria-haspopup="dialog"
-    >+ Nova publicação</button>
+    >+ Novo projeto</button>
 @endsection
 
 @section('content')
-    @include('admin.publicacoes.listarPublicacoes')
+    @include('admin.projetos.listarProjetos')
 @endsection

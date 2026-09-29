@@ -28,5 +28,11 @@ class Contato extends Model
         'cidade_bairro_contato',
         'profissao_contato',
         'origem_contato',
+        'ajuda_contato',
+        'metragem_contato',
+        'quantidades_ambientes_contato',
+        'trimestre_gestacao_contato',
+        'prazo_contato',
+        'detalhes_contato',
     ];
 }

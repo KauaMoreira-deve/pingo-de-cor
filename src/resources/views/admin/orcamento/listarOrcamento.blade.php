@@ -1,656 +1,264 @@
-<main class="app-main">
+@php
+    $orcamentosAprovados = $listaOrcamento->where('status_orcamento', 'Aprovado');
+    $totalAprovados = $orcamentosAprovados->count();
+    $totalPendentes = $listaOrcamento->where('status_orcamento', 'Pendente')->count();
+    $valorAprovado = $orcamentosAprovados->sum('valor_total_orcamento');
+@endphp
 
-    <!-- Cabeçalho -->
-    <div class="app-content-header">
-        <div class="container-fluid">
+<section class="admin-budget-summary" aria-label="Resumo dos orçamentos">
+    <article class="admin-budget-stat admin-budget-stat-total">
+        <div class="admin-budget-stat-heading">
+            <span>Total de orçamentos</span>
+            <span class="admin-budget-stat-icon" aria-hidden="true">&#128196;</span>
+        </div>
+        <strong>{{ $listaOrcamento->count() }}</strong>
+        <small>propostas cadastradas</small>
+    </article>
 
-            <div class="row">
+    <article class="admin-budget-stat admin-budget-stat-approved">
+        <div class="admin-budget-stat-heading">
+            <span>Aprovados</span>
+            <span class="admin-budget-stat-icon" aria-hidden="true">&#10003;</span>
+        </div>
+        <strong>{{ $totalAprovados }}</strong>
+        <small>orçamentos confirmados</small>
+    </article>
 
-                <div class="col-sm-6">
-                    <h1 class="mb-0 fs-3">Orçamentos</h1>
-                </div>
+    <article class="admin-budget-stat admin-budget-stat-pending">
+        <div class="admin-budget-stat-heading">
+            <span>Pendentes</span>
+            <span class="admin-budget-stat-icon" aria-hidden="true">&#9201;</span>
+        </div>
+        <strong>{{ $totalPendentes }}</strong>
+        <small>aguardando retorno</small>
+    </article>
 
-                <div class="col-sm-6">
-                    <nav aria-label="breadcrumb">
+    <article class="admin-budget-stat admin-budget-stat-value">
+        <div class="admin-budget-stat-heading">
+            <span>Valor aprovado</span>
+            <span class="admin-budget-stat-icon" aria-hidden="true">R$</span>
+        </div>
+        <strong>R$ {{ number_format($valorAprovado, 2, ',', '.') }}</strong>
+        <small>soma das propostas aprovadas</small>
+    </article>
+</section>
 
-                        <ol class="breadcrumb float-sm-end">
+<div class="admin-card">
+    <div class="admin-card-header">
+        <div>
+            <h2>Lista de orçamentos</h2>
+            <p>Consulte os dados comerciais e atualize o andamento das propostas.</p>
+        </div>
+        <span class="admin-tag">{{ $listaOrcamento->count() }} registros</span>
+    </div>
 
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('admin.dashboard') }}">
-                                    Dashboard
-                                </a>
-                            </li>
-
-                            <li class="breadcrumb-item active">
-                                Orçamentos
-                            </li>
-
-                        </ol>
-
-                    </nav>
-                </div>
-
-            </div>
-
+    <div class="admin-filter-row">
+        <div class="admin-search-fake" aria-label="Busca de orçamentos">
+            <span aria-hidden="true">&#128269;</span> Buscar orçamento...
+        </div>
+        <div class="admin-filter-fake" aria-label="Filtros de orçamentos">
+            <span class="selected">Todos</span>
+            <span>Aprovados</span>
+            <span>Pendentes</span>
+            <span>Em análise</span>
         </div>
     </div>
 
-
-    <!-- Conteúdo -->
-    <div class="app-content">
-
-        <div class="container-fluid">
-
-            <!-- Mensagem de sucesso -->
-            @if(session('sucesso'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-
-                    {{ session('sucesso') }}
-
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert">
-                    </button>
-
-                </div>
-            @endif
-
-
-            <!-- Mensagem de erro -->
-            @if(session('erro'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-
-                    {{ session('erro') }}
-
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert">
-                    </button>
-
-                </div>
-            @endif
-
-
-            <!-- Card -->
-            <div class="card">
-
-                <div class="card-header">
-
-                    <h3 class="card-title mb-0">
-                        Lista de Orçamentos
-                    </h3>
-
-                </div>
-
-
-                <div class="card-body">
-
-                    <div class="table-responsive">
-
-                        <table class="table table-bordered table-hover">
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>ID</th>
-
-                                    <th>Contato</th>
-
-                                    <th>Título</th>
-
-                                    <th>Valor</th>
-
-                                    <th>Prazo</th>
-
-                                    <th>Status</th>
-
-                                    <th>Data de criação</th>
-
-                                    <th>Ações</th>
-
-                                </tr>
-
-                            </thead>
-
-
-                            <tbody>
-
-                                @forelse($listaOrcamento as $orcamento)
-
-                                    <tr>
-
-                                        <td>
-                                            {{ $orcamento->id_orcamento }}
-                                        </td>
-
-                                        <td>
-                                            {{ $orcamento->id_contato }}
-                                        </td>
-
-                                        <td>
-                                            {{ $orcamento->titulo_orcamento }}
-                                        </td>
-
-                                        <td>
-                                            R$
-                                            {{ number_format($orcamento->valor_total_orcamento, 2, ',', '.') }}
-                                        </td>
-
-                                        <td>
-                                            {{ $orcamento->prazo_execucao_orcamento }}
-                                        </td>
-
-                                        <td>
-
-                                            @if($orcamento->status_orcamento == 'Aprovado')
-
-                                                <span class="badge text-bg-success">
-                                                    Aprovado
-                                                </span>
-
-                                            @elseif($orcamento->status_orcamento == 'Pendente')
-
-                                                <span class="badge text-bg-warning">
-                                                    Pendente
-                                                </span>
-
-                                            @else
-
-                                                <span class="badge text-bg-secondary">
-                                                    Análise
-                                                </span>
-
-                                            @endif
-
-                                        </td>
-
-                                        <td>
-                                            {{ date('d/m/Y H:i', strtotime($orcamento->data_criacao_orcamento)) }}
-                                        </td>
-
-                                        <td>
-
-                                            <!-- EDITAR -->
-                                            <button type="button"
-                                                    class="btn btn-sm btn-warning"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalEditar{{ $orcamento->id_orcamento }}">
-
-                                                Editar
-
-                                            </button>
-
-
-                                            <!-- EXCLUIR -->
-                                            <button type="button"
-                                                    class="btn btn-sm btn-danger"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalExcluir{{ $orcamento->id_orcamento }}">
-
-                                                Excluir
-
-                                            </button>
-
-                                        </td>
-
-                                    </tr>
-
-                                @empty
-
-                                    <tr>
-
-                                        <td colspan="8" class="text-center">
-
-                                            Nenhum orçamento cadastrado.
-
-                                        </td>
-
-                                    </tr>
-
-                                @endforelse
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="admin-table-wrap">
+        <table class="admin-table admin-budget-table">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Contato</th>
+                    <th scope="col">Orçamento</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Prazo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Criado em</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($listaOrcamento as $orcamento)
+                    @php
+                        $statusOrcamento = trim((string) $orcamento->status_orcamento);
+                        $statusNormalizado = mb_strtolower($statusOrcamento);
+                        $statusClass = match ($statusNormalizado) {
+                            'aprovado' => 'published',
+                            'pendente' => 'draft',
+                            'inativo' => 'inactive',
+                            default => 'review',
+                        };
+                        $statusLabel = $statusNormalizado === 'analise' ? 'Análise' : $statusOrcamento;
+                    @endphp
+                    <tr>
+                        <td><span class="admin-code">#{{ str_pad($orcamento->id_orcamento, 3, '0', STR_PAD_LEFT) }}</span></td>
+                        <td><span class="admin-code">#{{ $orcamento->id_contato }}</span></td>
+                        <td>
+                            <span class="cell-primary">{{ $orcamento->titulo_orcamento }}</span>
+                            @if ($orcamento->observacoes_orcamento)
+                                <span class="cell-secondary">{{ \Illuminate\Support\Str::limit($orcamento->observacoes_orcamento, 48) }}</span>
+                            @endif
+                        </td>
+                        <td><span class="admin-money">R$ {{ number_format($orcamento->valor_total_orcamento, 2, ',', '.') }}</span></td>
+                        <td>{{ $orcamento->prazo_execucao_orcamento }}</td>
+                        <td><span class="admin-status {{ $statusClass }}">{{ $statusLabel }}</span></td>
+                        <td><span class="admin-date">{{ date('d/m/Y', strtotime($orcamento->data_criacao_orcamento)) }}</span></td>
+                        <td>
+                            <div class="admin-actions">
+                                <button
+                                    type="button"
+                                    class="admin-action"
+                                    data-admin-modal-open="modalEditarOrcamento{{ $orcamento->id_orcamento }}"
+                                    aria-haspopup="dialog"
+                                >Editar</button>
+                                <button
+                                    type="button"
+                                    class="admin-action admin-action-danger"
+                                    data-admin-modal-open="modalExcluirOrcamento{{ $orcamento->id_orcamento }}"
+                                    aria-haspopup="dialog"
+                                >Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="8">
+                            <div class="admin-table-empty">
+                                <span aria-hidden="true">&#128196;</span>
+                                <strong>Nenhum orçamento cadastrado</strong>
+                                <small>Use o botão “Novo orçamento” para adicionar a primeira proposta.</small>
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 
-</main>
-
-
-<!-- ===================================================== -->
-<!-- MODAL: NOVO ORÇAMENTO -->
-<!-- ===================================================== -->
-
-<div class="modal fade"
-     id="modalNovoOrcamento"
-     tabindex="-1"
-     aria-hidden="true">
-
-    <div class="modal-dialog modal-lg">
-
-        <div class="modal-content">
-
-            <form action="{{ route('admin.orcamento.store') }}"
-                  method="POST">
-
-                @csrf
-
-                <div class="modal-header">
-
-                    <h5 class="modal-title">
-                        Novo Orçamento
-                    </h5>
-
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal">
-                    </button>
-
-                </div>
-
-
-                <div class="modal-body">
-
-                    <div class="row">
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                ID do Contato
-                            </label>
-
-                            <input type="number"
-                                   name="id_contato"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-8 mb-3">
-
-                            <label class="form-label">
-                                Título do Orçamento
-                            </label>
-
-                            <input type="text"
-                                   name="titulo_orcamento"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Valor Total
-                            </label>
-
-                            <input type="number"
-                                   name="valor_total_orcamento"
-                                   class="form-control"
-                                   step="0.01"
-                                   min="0"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Prazo de Execução
-                            </label>
-
-                            <input type="text"
-                                   name="prazo_execucao_orcamento"
-                                   class="form-control"
-                                   placeholder="Ex: 45 dias"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4 mb-3">
-
-                            <label class="form-label">
-                                Status
-                            </label>
-
-                            <select name="status_orcamento"
-                                    class="form-select"
-                                    required>
-
-                                <option value="Pendente">
-                                    Pendente
-                                </option>
-
-                                <option value="Aprovado">
-                                    Aprovado
-                                </option>
-
-                                <option value="Analise">
-                                    Análise
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="col-12 mb-3">
-
-                            <label class="form-label">
-                                Observações
-                            </label>
-
-                            <textarea name="observacoes_orcamento"
-                                      class="form-control"
-                                      rows="4"></textarea>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="modal-footer">
-
-                    <button type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal">
-
-                        Cancelar
-
-                    </button>
-
-                    <button type="submit"
-                            class="btn btn-primary">
-
-                        Salvar Orçamento
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
+    <div class="admin-card-footer">Total de orçamentos: {{ $listaOrcamento->count() }}</div>
 </div>
 
-
-<!-- ===================================================== -->
-<!-- MODAIS DE EDITAR E EXCLUIR -->
-<!-- ===================================================== -->
-
-@foreach($listaOrcamento as $orcamento)
-
-    <!-- MODAL EDITAR -->
-
-    <div class="modal fade"
-         id="modalEditar{{ $orcamento->id_orcamento }}"
-         tabindex="-1"
-         aria-hidden="true">
-
-        <div class="modal-dialog modal-lg">
-
-            <div class="modal-content">
-
-                <form action="{{ route('admin.orcamento.update', $orcamento->id_orcamento) }}"
-                      method="POST">
-
-                    @csrf
-
-                    @method('PUT')
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            Editar Orçamento
-                        </h5>
-
-                        <button type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal">
-                        </button>
-
-                    </div>
-
-
-                    <div class="modal-body">
-
-                        <div class="row">
-
-                            <div class="col-md-4 mb-3">
-
-                                <label class="form-label">
-                                    ID do Contato
-                                </label>
-
-                                <input type="number"
-                                       name="id_contato"
-                                       class="form-control"
-                                       value="{{ $orcamento->id_contato }}"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-8 mb-3">
-
-                                <label class="form-label">
-                                    Título do Orçamento
-                                </label>
-
-                                <input type="text"
-                                       name="titulo_orcamento"
-                                       class="form-control"
-                                       value="{{ $orcamento->titulo_orcamento }}"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <label class="form-label">
-                                    Valor Total
-                                </label>
-
-                                <input type="number"
-                                       name="valor_total_orcamento"
-                                       class="form-control"
-                                       step="0.01"
-                                       min="0"
-                                       value="{{ $orcamento->valor_total_orcamento }}"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <label class="form-label">
-                                    Prazo de Execução
-                                </label>
-
-                                <input type="text"
-                                       name="prazo_execucao_orcamento"
-                                       class="form-control"
-                                       value="{{ $orcamento->prazo_execucao_orcamento }}"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <label class="form-label">
-                                    Status
-                                </label>
-
-                                <select name="status_orcamento"
-                                        class="form-select"
-                                        required>
-
-                                    <option value="Pendente"
-                                        {{ $orcamento->status_orcamento == 'Pendente' ? 'selected' : '' }}>
-                                        Pendente
-                                    </option>
-
-                                    <option value="Aprovado"
-                                        {{ $orcamento->status_orcamento == 'Aprovado' ? 'selected' : '' }}>
-                                        Aprovado
-                                    </option>
-
-                                    <option value="Analise"
-                                        {{ $orcamento->status_orcamento == 'Analise' ? 'selected' : '' }}>
-                                        Análise
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="col-12 mb-3">
-
-                                <label class="form-label">
-                                    Observações
-                                </label>
-
-                                <textarea name="observacoes_orcamento"
-                                          class="form-control"
-                                          rows="4">{{ $orcamento->observacoes_orcamento }}</textarea>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="modal-footer">
-
-                        <button type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal">
-
-                            Cancelar
-
-                        </button>
-
-                        <button type="submit"
-                                class="btn btn-primary">
-
-                            Salvar alterações
-
-                        </button>
-
-                    </div>
-
-                </form>
-
+<x-admin.modal id="modalNovoOrcamento" title="Novo orçamento" size="large">
+    <form
+        id="formCriarOrcamento"
+        class="admin-form"
+        action="{{ route('admin.orcamento.store') }}"
+        method="POST"
+    >
+        @csrf
+        <div class="admin-form-grid">
+            <div class="admin-field">
+                <label for="criarContatoOrcamento">ID do contato</label>
+                <input id="criarContatoOrcamento" type="number" name="id_contato" min="1" required>
             </div>
+            <div class="admin-field">
+                <label for="criarTituloOrcamento">Título do orçamento</label>
+                <input id="criarTituloOrcamento" type="text" name="titulo_orcamento" placeholder="Ex.: Quarto infantil" required>
+            </div>
+            <div class="admin-field">
+                <label for="criarValorOrcamento">Valor total</label>
+                <input id="criarValorOrcamento" type="number" name="valor_total_orcamento" step="0.01" min="0" placeholder="0,00" required>
+            </div>
+            <div class="admin-field">
+                <label for="criarPrazoOrcamento">Prazo de execução</label>
+                <input id="criarPrazoOrcamento" type="text" name="prazo_execucao_orcamento" placeholder="Ex.: 45 dias" required>
+            </div>
+            <div class="admin-field">
+                <label for="criarStatusOrcamento">Status</label>
+                <select id="criarStatusOrcamento" name="status_orcamento" required>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Aprovado">Aprovado</option>
+                    <option value="Analise">Análise</option>
+                </select>
+            </div>
+            <div class="admin-field admin-field-full">
+                <label for="criarObservacoesOrcamento">Observações</label>
+                <textarea id="criarObservacoesOrcamento" name="observacoes_orcamento" rows="4" placeholder="Adicione detalhes importantes sobre a proposta"></textarea>
+            </div>
+        </div>
+    </form>
 
+    <x-slot name="footer">
+        <button type="button" class="admin-outline-btn" data-admin-modal-close>Cancelar</button>
+        <button type="submit" class="admin-primary-btn" form="formCriarOrcamento">Salvar orçamento</button>
+    </x-slot>
+</x-admin.modal>
+
+@foreach ($listaOrcamento as $orcamento)
+    <x-admin.modal id="modalEditarOrcamento{{ $orcamento->id_orcamento }}" title="Editar orçamento" size="large">
+        <form
+            id="formEditarOrcamento{{ $orcamento->id_orcamento }}"
+            class="admin-form"
+            action="{{ route('admin.orcamento.update', $orcamento->id_orcamento) }}"
+            method="POST"
+        >
+            @csrf
+            @method('PUT')
+            <div class="admin-form-grid">
+                <div class="admin-field">
+                    <label for="editarContatoOrcamento{{ $orcamento->id_orcamento }}">ID do contato</label>
+                    <input id="editarContatoOrcamento{{ $orcamento->id_orcamento }}" type="number" name="id_contato" min="1" value="{{ $orcamento->id_contato }}" required>
+                </div>
+                <div class="admin-field">
+                    <label for="editarTituloOrcamento{{ $orcamento->id_orcamento }}">Título do orçamento</label>
+                    <input id="editarTituloOrcamento{{ $orcamento->id_orcamento }}" type="text" name="titulo_orcamento" value="{{ $orcamento->titulo_orcamento }}" required>
+                </div>
+                <div class="admin-field">
+                    <label for="editarValorOrcamento{{ $orcamento->id_orcamento }}">Valor total</label>
+                    <input id="editarValorOrcamento{{ $orcamento->id_orcamento }}" type="number" name="valor_total_orcamento" step="0.01" min="0" value="{{ $orcamento->valor_total_orcamento }}" required>
+                </div>
+                <div class="admin-field">
+                    <label for="editarPrazoOrcamento{{ $orcamento->id_orcamento }}">Prazo de execução</label>
+                    <input id="editarPrazoOrcamento{{ $orcamento->id_orcamento }}" type="text" name="prazo_execucao_orcamento" value="{{ $orcamento->prazo_execucao_orcamento }}" required>
+                </div>
+                <div class="admin-field">
+                    <label for="editarStatusOrcamento{{ $orcamento->id_orcamento }}">Status</label>
+                    <select id="editarStatusOrcamento{{ $orcamento->id_orcamento }}" name="status_orcamento" required>
+                        <option value="Pendente" @selected($orcamento->status_orcamento === 'Pendente')>Pendente</option>
+                        <option value="Aprovado" @selected($orcamento->status_orcamento === 'Aprovado')>Aprovado</option>
+                        <option value="Analise" @selected($orcamento->status_orcamento === 'Analise')>Análise</option>
+                    </select>
+                </div>
+                <div class="admin-field admin-field-full">
+                    <label for="editarObservacoesOrcamento{{ $orcamento->id_orcamento }}">Observações</label>
+                    <textarea id="editarObservacoesOrcamento{{ $orcamento->id_orcamento }}" name="observacoes_orcamento" rows="4">{{ $orcamento->observacoes_orcamento }}</textarea>
+                </div>
+            </div>
+        </form>
+
+        <x-slot name="footer">
+            <button type="button" class="admin-outline-btn" data-admin-modal-close>Cancelar</button>
+            <button type="submit" class="admin-primary-btn" form="formEditarOrcamento{{ $orcamento->id_orcamento }}">Salvar alterações</button>
+        </x-slot>
+    </x-admin.modal>
+
+    <x-admin.modal
+        id="modalExcluirOrcamento{{ $orcamento->id_orcamento }}"
+        title="Excluir orçamento"
+        size="small"
+        variant="danger"
+    >
+        <form
+            id="formExcluirOrcamento{{ $orcamento->id_orcamento }}"
+            action="{{ route('admin.orcamento.destroy', $orcamento->id_orcamento) }}"
+            method="POST"
+        >
+            @csrf
+            @method('DELETE')
+        </form>
+
+        <div class="admin-delete-message">
+            <span class="admin-delete-icon" aria-hidden="true">!</span>
+            <div>
+                <p>Tem certeza que deseja excluir <strong>{{ $orcamento->titulo_orcamento }}</strong>?</p>
+                <small>Esta ação não poderá ser desfeita.</small>
+            </div>
         </div>
 
-    </div>
-
-
-    <!-- MODAL EXCLUIR -->
-
-    <div class="modal fade"
-         id="modalExcluir{{ $orcamento->id_orcamento }}"
-         tabindex="-1"
-         aria-hidden="true">
-
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-
-                <form action="{{ route('admin.orcamento.destroy', $orcamento->id_orcamento) }}"
-                      method="POST">
-
-                    @csrf
-
-                    @method('DELETE')
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            Excluir Orçamento
-                        </h5>
-
-                        <button type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal">
-                        </button>
-
-                    </div>
-
-
-                    <div class="modal-body">
-
-                        <p class="mb-0">
-
-                            Tem certeza que deseja excluir o orçamento:
-
-                            <strong>
-                                {{ $orcamento->titulo_orcamento }}
-                            </strong>?
-
-                        </p>
-
-                        <p class="text-muted mt-2 mb-0">
-
-                            Essa ação não poderá ser desfeita.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="modal-footer">
-
-                        <button type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal">
-
-                            Cancelar
-
-                        </button>
-
-                        <button type="submit"
-                                class="btn btn-danger">
-
-                            Excluir
-
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
+        <x-slot name="footer">
+            <button type="button" class="admin-outline-btn" data-admin-modal-close>Cancelar</button>
+            <button type="submit" class="admin-danger-btn" form="formExcluirOrcamento{{ $orcamento->id_orcamento }}">Excluir orçamento</button>
+        </x-slot>
+    </x-admin.modal>
 @endforeach

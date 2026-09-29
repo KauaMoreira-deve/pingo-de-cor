@@ -4,7 +4,7 @@
         <div class="admin-topbar-title"><small>ÁREA ADMINISTRATIVA</small><strong>@yield('navtitle', 'Visão geral')</strong></div>
     </div>
     <div class="admin-topbar-right">
-        <span class="admin-demo-pill"><span></span>Prévia demonstrativa</span>
+        
         <a href="{{ route('home') }}" target="_blank" rel="noopener noreferrer" class="admin-view-site">Ver site <span>&rarr;</span></a>
         <span class="admin-avatar" aria-label="Pingo Decor">PD</span>
     </div>

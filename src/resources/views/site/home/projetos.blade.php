@@ -1,6 +1,19 @@
 <section id="projetos">
   <article class="cards">
 
+    @foreach (($projetosDinamicos ?? collect()) as $projeto)
+      @php
+        $caminhoProjeto = 'pingo-decor/assets/' . ltrim($projeto->imagem_projetos, '/');
+        $imagemProjeto = file_exists(public_path($caminhoProjeto))
+          ? asset($caminhoProjeto)
+          : asset('pingo-decor/assets/imagem-indisponivel.svg');
+      @endphp
+      <a class="card" href="{{ route('projetos.index') }}">
+        <img src="{{ $imagemProjeto }}" alt="{{ $projeto->nome_projetos }}" loading="lazy" decoding="async">
+        <p>{{ mb_strtoupper($projeto->nome_projetos) }}</p>
+      </a>
+    @endforeach
+
     <a class="card" href="{{ route('projetos.show', 'quarto-olivia') }}">
       <img src="{{ asset('pingo-decor/assets/img/olivia.webp') }}" loading="lazy" decoding="async">
       <p>QUARTO OLIVIA</p>
