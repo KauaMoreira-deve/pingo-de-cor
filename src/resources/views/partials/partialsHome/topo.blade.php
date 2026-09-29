@@ -1,7 +1,7 @@
 <header class="header">
     <div class="container">
         <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('pingo-decor/assets/logo.svg') }}" alt="Pingo Decor"></a></div>
-        <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menu">?</button>
+        <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
         <nav class="menu" id="menu" aria-label="Navega??o principal">
             <ul>
                 <li><a href="{{ route('home') }}" @if (request()->routeIs('home')) aria-current="page" @endif>Home</a></li>

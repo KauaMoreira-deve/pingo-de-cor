@@ -24,7 +24,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('sobre');
 Route::get('/projetos', [ProjetosController::class, 'index'])->name('projetos.index');
 Route::get('/projetos/{projeto}', [ProjetosController::class, 'show'])->name('projetos.show');
-Route::get('/publicacoes', [PublicacoesController::class, 'publicacoes'])->name('publicacoes');
+Route::get('/publicacoes', [PublicacoesController::class, 'index'])->name('publicacoes');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
 
 // Os endereços antigos continuam funcionando como redirecionamentos.
@@ -50,7 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/banners', [BannerController::class, 'index'])->name('banner.index');
     Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
     Route::get('/contato', [AdminContatoController::class, 'index'])->name('contato.index');
-    Route::get('/publicacoes', [PublicacaoController::class, 'index'])->name('publicacoes.index');
+    Route::get('/publicacoes', [Publicacoesontroller::class, 'index'])->name('publicacoes.index');
     Route::get('/orcamento', [OrcamentoController::class, 'index'])->name('orcamento.index');
 
 
@@ -66,9 +66,8 @@ Route::post('/orcamento', [OrcamentoController::class, 'store'])
 Route::put('/orcamento/{id}', [OrcamentoController::class, 'update'])
     ->name('orcamento.update');
 
-Route::patch('/orcamento/{id}/status', [OrcamentoController::class, 'status'])
-    ->name('orcamento.status');
-
+Route::delete('/orcamento/{id}', [OrcamentoController::class, 'destroy'])
+    ->name('orcamento.destroy');
 
     
 });

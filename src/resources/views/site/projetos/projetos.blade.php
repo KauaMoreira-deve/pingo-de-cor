@@ -29,7 +29,7 @@
 
   <a href="{{ route('projetos.show', 'quarto-julia-isabella') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}">
+      <img src="{{ asset('pingo-decor/assets/img/_mg_8880.jpg') }}">
       <p>QUARTO JULIA E ISABELLA</p>
     </div>
   </a>
@@ -50,21 +50,21 @@
 
   <a href="{{ route('projetos.show', 'quarto-catarina') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}">
+      <img src="{{ asset('pingo-decor/assets/quarto catarina/_mg_1482.jpg') }}">
       <p>QUARTO CATARINA</p>
     </div>
   </a>
 
   <a href="{{ route('projetos.show', 'quarto-benjamin') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}">
+      <img src="{{ asset('pingo-decor/assets/img/_mg_3739.jpg') }}">
       <p>QUARTO BENJAMIN</p>
     </div>
   </a>
 
   <a href="{{ route('projetos.show', 'quarto-alice-catarina') }}" class="projeto-card">
     <div class="projeto quarto">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}">
+      <img src="{{ asset('pingo-decor/assets/img/img_2207.jpg') }}">
       <p>QUARTO ALICE & CATARINA</p>
     </div>
   </a>

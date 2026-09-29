@@ -29,7 +29,7 @@
 
     <a href="https://paisefilhos.com.br/crianca/cores-moveis-e-carinho-conheca-o-quarto-que-reflete-a-personalidade-de-benjamin/" target="_blank" class="pub-card">
       <div class="pub-img">
-        <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" alt="">
+        <img src="{{ asset('pingo-decor/assets/img/image.png') }}" alt="">
       </div>
       <div class="pub-info">
         <h3>QUARTO BENJAMIN</h3>
@@ -40,7 +40,7 @@
 
     <a href="https://www.melhorlugar.blog.br/post/marcenaria-planejada-organiza-quarto-infantil" target="_blank" class="pub-card">
       <div class="pub-img">
-        <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" alt="">
+        <img src="{{ asset('pingo-decor/assets/img/_mg_1415.jpg') }}" alt="">
       </div>
       <div class="pub-info">
         <h3>PROJETO TAÍS FALEIROS</h3>
@@ -51,7 +51,7 @@
 
     <a href="https://www.melhorlugar.blog.br/post/dicas-para-projetar-quartos-infantis" target="_blank" class="pub-card">
       <div class="pub-img">
-        <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" alt="">
+        <img src="{{ asset('pingo-decor/assets/brinquedoteca gael, theo e sofia/_mg_0190.jpg') }}" alt="">
       </div>
       <div class="pub-info">
         <h3>DICAS PARA PROJETAR QUARTOS INFANTIS</h3>
@@ -62,7 +62,7 @@
 
     <a href="https://revistadecor.com.br/now/casa-muskinha-apresenta-espacos-assinados-por-grandes-nomes-da-arquitetura-e-do-design/" target="_blank" class="pub-card">
       <div class="pub-img">
-        <img src="{{ asset('pingo-decor/assets/img/muskinha.jpeg') }}" alt="Casa Muskinha">
+        <img src="{{ asset('pingo-decor/assets/img/brinquedoteca.jpg') }}" alt="Casa Muskinha">
       </div>
       <div class="pub-info">
         <h3>CASA MUSKINHA</h3>

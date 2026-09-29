@@ -1,1 +1,1 @@
-<section class="banner"></section>
+<section class="banner" style="background-image: url('{{ asset('pingo-decor/assets/img/bannerPingoDecor.png') }}');"></section>

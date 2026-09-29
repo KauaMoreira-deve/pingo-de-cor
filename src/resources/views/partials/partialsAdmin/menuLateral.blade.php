@@ -1,6 +1,6 @@
 <aside class="app-sidebar admin-sidebar" aria-label="Menu administrativo">
     <a class="admin-brand" href="{{ route('admin.dashboard') }}">
-        <span class="admin-brand-mark"><img src="{{ asset('pingo-decor/assets/logo.svg') }}" alt="Pingo Decor"></span>
+        <span class="admin-brand-mark"><img src="{{ asset('pingo-decor/assets/img/LOGO.SVG.svg') }}" alt="Pingo Decor"></span>
         <span class="admin-brand-label">Painel de conteúdo</span>
     </a>
     <div class="admin-sidebar-inner">

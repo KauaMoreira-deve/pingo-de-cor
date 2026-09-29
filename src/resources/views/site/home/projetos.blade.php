@@ -7,7 +7,7 @@
     </a>
 
     <a class="card" href="{{ route('projetos.show', 'quarto-matteo') }}">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" loading="lazy" decoding="async">
+      <img src="{{ asset('pingo-decor/assets/img/_mg_0092.jpg') }}" loading="lazy" decoding="async">
       <p>QUARTO MATTEO</p>
     </a>
 
@@ -22,7 +22,7 @@
     </a>
 
     <a class="card" href="{{ route('projetos.show', 'quarto-julia-isabella') }}">
-      <img src="{{ asset('pingo-decor/assets/imagem-indisponivel.svg') }}" loading="lazy" decoding="async">
+      <img src="{{ asset('pingo-decor/assets/img/_mg_8856.jpg') }}" loading="lazy" decoding="async">
       <p> QUARTO JULIA & ISABELLA</p>
     </a>
 
@@ -30,6 +30,13 @@
       <img src="{{ asset('pingo-decor/assets/img/_MG_1853.jpg') }}" loading="lazy" decoding="async">
       <p>QUATO DAN & AVA</p>
     </a>
+
+     <a class="card" href="{{ route('projetos.show', 'quarto-catarina') }}">
+      <img src="{{ asset('pingo-decor/assets/img/_mg_1415.jpg') }}" loading="lazy" decoding="async">
+      <p>QUATO CATARINA</p>
+    </a>
+
+
 
   </article>
 </section>
