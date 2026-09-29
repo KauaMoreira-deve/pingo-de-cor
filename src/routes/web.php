@@ -16,10 +16,6 @@ use App\Http\Controllers\Admin\ContatoController as AdminContatoController;
 use App\Http\Controllers\Admin\PublicacaoController;
 use App\Http\Controllers\Admin\OrcamentoController;
 
-
-
-
-
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('sobre');
 Route::get('/projetos', [ProjetosController::class, 'index'])->name('projetos.index');
