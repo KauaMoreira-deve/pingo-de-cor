@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\PublicImageStorage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,4 +33,16 @@ class Cliente extends Model
     protected $hidden = [
         'senha_cliente',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'senha_cliente' => 'hashed',
+        ];
+    }
+
+    public function photoUrl(): string
+    {
+        return PublicImageStorage::url($this->foto_cliente);
+    }
 }

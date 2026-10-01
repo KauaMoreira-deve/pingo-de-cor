@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\PublicImageStorage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,4 +26,9 @@ class Banner extends Model
         'imagem_banner',
         'status_banner',
     ];
+
+    public function imageUrl(string $fallbackAsset = 'pingo-decor/assets/imagem-indisponivel.svg'): string
+    {
+        return PublicImageStorage::url($this->imagem_banner, $fallbackAsset);
+    }
 }

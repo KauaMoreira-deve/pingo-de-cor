@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Contato extends Model
@@ -16,7 +17,9 @@ class Contato extends Model
     protected $primaryKey = 'id_contato';
 
     // Se a tabela não utilizar os campos padrão created_at / updated_at
-    public $timestamps = false;
+    const CREATED_AT = 'data_criacao_contato';
+
+    const UPDATED_AT = 'data_atualizacao_contato';
 
     // Campos permitidos para atribuição em massa
     protected $fillable = [
